@@ -1,0 +1,46 @@
+/**
+ * CSS Pseudo-Classes Demo
+ **/
+
+/* Normal Element Rule */
+a {
+  font-size: 64px;
+}
+
+/* Hover Pseudo Class:
+    Changes the style only when mouse hovers
+    over the preceding element.
+*/
+a:hover {
+  background-color: pink;
+}
+
+/* Focus Pseudo Class
+    Changes the style only when browser
+    gives the element focus
+    (in this case, after the link is clicked).
+*/
+a:focus {
+  color: orange;
+}
+
+/* Active Pseudo Class
+    Changes the style only while the user
+    clicks down on an element. This style ceases
+    when the user releases their click.
+*/
+a:active {
+  color: green;
+}
+
+p:first-child {
+  color: yellow;
+  background-color: grey;
+}
+
+p::first-line
+{
+  color: #eee;
+  background-color: #333;
+}
+
