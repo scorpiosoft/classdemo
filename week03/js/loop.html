@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Looping Through Arrays</title>
+  </head>
+  <body>
+
+    <h1>Open the console to see the magic!</h1>
+
+    <script>
+      var i, c;
+
+      // Creating an array of vegetables.
+      var vegetables = ["Carrots", "Peas", "Lettuce", "Tomatoes"];
+
+      // Looping through each item in the array and logging a message to the console.
+      for (i = 0; i < vegetables.length; i++)
+      {
+        vegetables[i] = vegetables[i].toLowerCase();
+        console.log("I love " + vegetables[i]);
+        // console.log("I love " + vegetables[i].toLowerCase());
+      }
+
+      for (i = 0; i < 5; ++i)
+      {
+        console.log("I am " + i);
+      }
+
+      var myFarm = ["chickens", "pigs", "cows", "horses", "ostriches"];
+      for (i = 0; i < myFarm.length; ++i)
+      {
+        console.log(myFarm[i]);
+        // c = myFarm[i][0];
+        c = myFarm[i].charAt(0);
+        if (c === 'c' || c === 'o')
+          alert("Starts with 'c' or 'o'!");
+      }
+
+    </script>
+    
+  </body>
+</html>
+
