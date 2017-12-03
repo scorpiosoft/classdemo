@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Content!</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <h1>Drink Selection!</h1>
+  <hr>
+
+  <!-- Here we create a generic drink-options div -->
+  <div id="drink-options"></div>
+
+  <hr>
+  <hr>
+
+  <h1>Now With JQuery!</h1>
+  <hr>
+
+  <!-- Here we create a generic drink-options div -->
+  <div id="jq"></div>
+
+  <script type="text/javascript">
+
+    // Array holds all of the drinks available
+    var drinkList = [
+      "Coffee: $5",
+      "Espresso: $7",
+      "Cappuccino: $6",
+      "Latte: $4",
+      "Tea: $3",
+      "Ice Coffee: $6",
+      "Ice Espresso: $8",
+      "Ice Latte: $6",
+      "Ice Tea: $4"
+    ];
+    var drinkObj = {
+      Coffee: "$5",
+      Espresso: "$7",
+      Cappuccino: "$6",
+      Latte: "$4",
+      Tea: "$3",
+      IceCoffee: "$6",
+      IceEspresso: "$8",
+      IceLatte: "$6",
+      IceTea: "$4",
+      "three key words": "XX",
+    };
+
+    // 1. Create code that "grabs" the div with the matching id (#drink-options);
+    // ...
+    var d_options = document.getElementById("drink-options");
+    var d_jq = $("#jq");
+
+    // ...
+
+
+    // 2. Create a for loop that creates HTML content of all the drinks using JavaScript.
+    // HINT: You will need to use each of the following methods: createElement, innerHTML, appendChild
+    // ...
+    for (var i = 0; i < drinkList.length; ++i)
+    {
+      var new_div = document.createElement("drink" + i);
+      new_div.innerHTML = "<p>" + drinkList[i] + "</p>";
+      d_options.appendChild(new_div);
+    }
+
+    // Now manipulate HTML with JQuery
+
+    // iterate an array
+    $.each( drinkList, function( i, value )
+    {
+      console.log("i:", i, "value:", value);
+      var new_div = $("<div>");
+      new_div.text(value);
+      d_jq.append(new_div);
+    });
+
+    // iterate an object
+    $.each( drinkObj, function( key, value )
+    {
+      console.log("key:", key, "value:", value);
+      var k = key.replace(/ /g, "_"); // strip spaces
+      var new_div = $("<div id=" + k + ">");
+      new_div.text("Drink: " + key + " --- Cost: " + value);
+      d_jq.append(new_div);
+    });
+
+  </script>
+
+</body>
+</html>
