@@ -1,175 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>jQuery Calculator</title>
+  <meta charset="UTF-8">
+  <title>jQuery Calc</title>
 
-    <!-- Added link to the jQuery Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Added link to the jQuery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- Added a link to Bootstrap-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Added a link to Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 </head>
 <body>
 
 <!-- Jumbotron for Title -->
 <div class="jumbotron">
-    <h1 class="text-center">jQuery Calculator</h1>
-    <h3 class="text-center">Perform basic mathematic operations using the power of jQuery!</h3>
+  <h1 class="text-center">jQuery Calc</h1>
+  <h3 class="text-center">Perform basic mathematic operations using the power of jQuery!</h3>
 </div>
 
 <div class="container">
 
-    <div class="row">
+  <div class="row">
 
-        <!-- Calculator Panel -->
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Calculator</h3>
-                </div>
-
-                <div class="panel-body">
-                    <button id="button-1" class="btn btn-primary number" value="1"><h1>1</h1></button>
-                    <button id="button-2" class="btn btn-primary number" value="2"><h1>2</h1></button>
-                    <button id="button-3" class="btn btn-primary number" value="3"><h1>3</h1></button>
-                    <button id="button-plus" class="btn btn-danger operator" value="plus"><h1>+</h1></button>
-                    <br><br>
-                    <button id="button-4" class="btn btn-primary number" value="4"><h1>4</h1></button>
-                    <button id="button-5" class="btn btn-primary number" value="5"><h1>5</h1></button>
-                    <button id="button-6" class="btn btn-primary number" value="6"><h1>6</h1></button>
-                    <button id="button-minus" class="btn btn-danger operator" value="minus"><h1>&minus;</h1></button>
-                    <br><br>
-                    <button id="button-7" class="btn btn-primary number" value="7"><h1>7</h1></button>
-                    <button id="button-8" class="btn btn-primary number" value="8"><h1>8</h1></button>
-                    <button id="button-9" class="btn btn-primary number" value="9"><h1>9</h1></button>
-                    <button id="button-multiply" class="btn btn-danger operator" value="times"><h1>&times;</h1></button>
-                    <br><br>
-                    <button id="button-0" class="btn btn-primary number" value="0"><h1>0</h1></button>
-                    <button id="button-divide" class="btn btn-danger operator" value="divide"><h1>&divide;</h1></button>
-                    <button id="button-power" class="btn btn-danger operator" value="power"><h1>^</h1></button>
-                    <button id="button-equal" class="btn btn-success equal" value="equals"><h1>=</h1></button>
-                    <br><br>
-                    <button id="button-clear" class="btn btn-default clear" value="clear"><h1>clear</h1></button>
-                </div>
-
-            </div>
+    <!-- Calc Panel -->
+    <div class="col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Calc</h3>
         </div>
 
-        <!-- Result Panel -->
-        <div class="col-lg-6">
-        <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Result</h3>
-                </div>
-                <div class="panel-body">
-                    <h1 id="first-number"></h1>
-                    <h1 id="operator"></h1>
-                    <h1 id="second-number"></h1>
-                    <hr>
-                    <h1 id="result"></h1>
-                </div>
-            </div>
+        <div class="panel-body">
+          <button id="button-1" class="btn btn-primary number" value="1"><h1>1</h1></button>
+          <button id="button-2" class="btn btn-primary number" value="2"><h1>2</h1></button>
+          <button id="button-3" class="btn btn-primary number" value="3"><h1>3</h1></button>
+          <button id="button-plus" class="btn btn-danger operator" value="plus"><h1>+</h1></button>
+          <br><br>
+          <button id="button-4" class="btn btn-primary number" value="4"><h1>4</h1></button>
+          <button id="button-5" class="btn btn-primary number" value="5"><h1>5</h1></button>
+          <button id="button-6" class="btn btn-primary number" value="6"><h1>6</h1></button>
+          <button id="button-minus" class="btn btn-danger operator" value="minus"><h1>&minus;</h1></button>
+          <br><br>
+          <button id="button-7" class="btn btn-primary number" value="7"><h1>7</h1></button>
+          <button id="button-8" class="btn btn-primary number" value="8"><h1>8</h1></button>
+          <button id="button-9" class="btn btn-primary number" value="9"><h1>9</h1></button>
+          <button id="button-multiply" class="btn btn-danger operator" value="times"><h1>&times;</h1></button>
+          <br><br>
+          <button id="button-0" class="btn btn-primary number" value="0"><h1>0</h1></button>
+          <button id="button-divide" class="btn btn-danger operator" value="divide"><h1>&divide;</h1></button>
+          <button id="button-power" class="btn btn-danger operator" value="power"><h1>^</h1></button>
+          <button id="button-equal" class="btn btn-success equal" value="equals"><h1>=</h1></button>
+          <br><br>
+          <button id="button-clear" class="btn btn-default clear" value="clear"><h1>clear</h1></button>
         </div>
+
+      </div>
     </div>
+
+    <!-- Result Panel -->
+    <div class="col-lg-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Result</h3>
+        </div>
+        <div class="panel-body">
+          <h1 id="first-number"></h1>
+          <h1 id="operator"></h1>
+          <h1 id="second-number"></h1>
+          <hr>
+          <h1 id="result"></h1>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script type="text/javascript">
 
 // $(document).ready(function(){
 
-// Your code here...
-var calclator =
+var Calc =
 {
-  first: -1, 
-  second: -1,
+  operator_chosen: false,
+  calculated: false,
+  first: "", 
+  second: "",
   operator: "",
-  result: -1,
+  result: "",
   d_first: $("#first-number"),
   d_second: $("#second-number"),
   d_operator: $("#operator"),
   d_result: $("#result"),
+  reset: function()
+  {
+    this.operator_chosen = this.calculated = false;
+    this.first = this.second = this.result = "";
+    this.operator = "";
+    this.d_first.empty();
+    this.d_second.empty();
+    this.d_operator.empty();
+    this.d_result.empty();
+  }
 };
 
 $(".number").on("click", function()
 {
-    if (calclator.first < 0)
-    {
-        calclator.first = parseInt($(this).attr("value"));
-        calclator.d_first.text(calclator.first);
-    }
-    else 
-    if (calclator.second < 0)
-    {
-        calclator.second = parseInt($(this).attr("value"));
-        calclator.d_second.text(calclator.second);
-    }
-    else
-    {
-        return; // already have both
-    }
+  // if already equated, ignore
+  if (Calc.calculated)
+    return;
+
+  // if operator is chosen, build second, else build first
+  if (Calc.operator_chosen)
+  {
+    Calc.second += $(this).attr("value");
+    Calc.d_second.text(Calc.second);
+  } else {
+    Calc.first +=  $(this).attr("value");
+    Calc.d_first.text(Calc.first);
+  }
 });
 $(".operator").on("click", function()
 {
-    // alreay have one
-    if (calclator.operator !== "")
-        return;
+  // alreay have one
+  if (Calc.operator !== "")
+    return;
 
-    switch ($(this).attr("value"))
-    {
-        case "plus":
-            calclator.operator = "+";
-            break;
-        case "minus":
-            calclator.operator = "-";
-            break;
-        case "times":
-            calclator.operator = "*";
-            break;
-        case "divide":
-            calclator.operator = "/";
-            break;
-        case "power":
-            calclator.operator = "^";
-            break;
-    }
-    calclator.d_operator.text(calclator.operator);
+  switch ($(this).attr("value"))
+  {
+    case "plus":
+      Calc.operator = "+";
+      break;
+    case "minus":
+      Calc.operator = "-";
+      break;
+    case "times":
+      Calc.operator = "*";
+      break;
+    case "divide":
+      Calc.operator = "/";
+      break;
+    case "power":
+      Calc.operator = "^";
+      break;
+  }
+  Calc.d_operator.text(Calc.operator);
+  Calc.operator_chosen = true;
 });
 $(".equal").on("click", function()
 {
-    var result = 0;
-    switch (calclator.operator)
-    {
-        case "+":
-            result = calclator.first + calclator.second;
-            // result = +(calclator.first) + +(calclator.second); // this method converts strings to numbers
-            break;
-        case "-":
-            result = calclator.first - calclator.second;
-            break;
-        case "*":
-            result = calclator.first * calclator.second;
-            break;
-        case "/":
-            result = calclator.first / calclator.second;
-            break;
-        case "^":
-            result = Math.pow(calclator.first,calclator.second);
-            break;
-    }
-    calclator.d_result.text(result);
+  var result = 0;
+  switch (Calc.operator)
+  {
+    case "+":
+      // result = Calc.first + Calc.second;
+      result = +(Calc.first) + +(Calc.second); // this method converts strings to numbers
+      break;
+    case "-":
+      result = Calc.first - Calc.second;
+      break;
+    case "*":
+      result = Calc.first * Calc.second;
+      break;
+    case "/":
+      result = Calc.first / Calc.second;
+      break;
+    case "^":
+      result = Math.pow(Calc.first,Calc.second);
+      break;
+  }
+  Calc.d_result.text(result);
+  Calc.calculated = true;
 });
 $(".clear").on("click", function()
 {
-    calclator.first = calclator.second = calclator.result = -1;
-    calclator.operator = "";
-    calclator.d_first.empty();
-    calclator.d_second.empty();
-    calclator.d_operator.empty();
-    calclator.d_result.empty();
+  Calc.reset();
 });
-
 
 // });
 
