@@ -24,7 +24,7 @@ $('#my_image').on({
 });
 
 
-// To rotate the image, you could do this:
+// To cycle the image, you could do this:
 $('img').on({
     'click': function() {
          var src = ($(this).attr('src') === 'img1_on.jpg')
@@ -32,3 +32,4 @@ $('img').on({
             : 'img1_on.jpg';
          $(this).attr('src', src);
     }
+});
