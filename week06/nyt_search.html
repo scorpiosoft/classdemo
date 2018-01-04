@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>NYT Search</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+
+<body>
+  <div id="junk" class="container">
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+//     var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+// $.ajax({
+//   url: url,
+//   method: 'GET',
+// }).done(function(result) {
+//   console.log(result);
+// }).fail(function(err) {
+//   throw err;
+// });
+$('#search_button').on('click', function(event)
+{
+  // https://developer.nytimes.com/
+  // https://developer.nytimes.com/article_search_v2.json#/README
+  // https://developer.nytimes.com/article_search_v2.json#/Documentation/GET/articlesearch.json
+  // https://developer.nytimes.com/article_search_v2.json#/Console/GET/articlesearch.json
+  
+  var search_term = $("#movie-input").val().trim(); // see movie example for form
+  var limit;
+  var start_year;
+  var end_year;
+
+
+  var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+  url += '?' + $.param({
+    'api-key': "8cbc89e55dcd4640b52a95806c33baed",
+    'q': search_term,
+    'begin_date': start_year+"0101",
+    'end_date': end_year+"1231",
+    'limit' : limit,
+  });
+  $.ajax({
+    url: url,
+    method: 'GET',
+  }).done(function(result) {
+    console.log(result);
+    for (var i = 0; i < result.response.docs.length; ++i)
+    {
+      console.log("Headline "+i+":", result.response.docs[i].headline.main);
+      console.log("Date "+i+":", result.response.docs[i].pub_date);
+    }
+  }).fail(function(err) {
+    throw err;
+  });
+});
+  </script>
+</body>
+</html>
