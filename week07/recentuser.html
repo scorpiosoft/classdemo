@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Sign-Up Today!</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <br>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="text-center">Sign-Up Today!</h1>
+    </div>
+    <div class="row">
+
+      <!-- Sign-Up Panel-->
+      <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">New Member Sign-Up</h3>
+          </div>
+          <div class="panel-body">
+
+            <!-- Sign-up Form (note the various input "types")-->
+            <form role="form">
+              <div class="form-group">
+                <label for="name-input">Name:</label>
+                <input class="form-control" id="name-input" type="text">
+              </div>
+              <div class="form-group">
+                <label for="email-input">Email:</label>
+                <input class="form-control" id="email-input" type="email">
+              </div>
+              <div class="form-group">
+                <label for="age-input">Age:</label>
+                <input class="form-control" id="age-input" type="number">
+              </div>
+              <div class="form-group">
+                <label for="comment-input">How did you hear about us?</label>
+                <textarea class="form-control" id="comment-input" rows="5"></textarea>
+              </div>
+              <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Most Recent Member Panel -->
+      <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Most Recent Member</h3>
+          </div>
+          <div class="panel-body" id="recent-member">
+            <h2 id="name-display"></h2>
+            <h4 id="email-display"></h4>
+            <h4 id="age-display"></h4>
+            <p id="comment-display"></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+  <!-- LINK TO FIREBASE GOES HERE -->
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+
+  <!-- Script -->
+<script>
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyANDywSVU9hHax6WE8PMuaiDK3qdTdsj78",
+  authDomain: "fir-21155.firebaseapp.com",
+  databaseURL: "https://fir-21155.firebaseio.com",
+  projectId: "fir-21155",
+  storageBucket: "fir-21155.appspot.com",
+  messagingSenderId: "614199486533"
+};
+firebase.initializeApp(config);
+// grab handle to the database
+var database = firebase.database();
+
+// initial values
+var inp_name = "Jimmy John";
+var inp_age = 27;
+var inp_email = "jimmy@john.edu";
+var inp_comment = "I'm signing up, because I want to spread sandwiches to the world.";
+
+// set initial value in the db if it doesn't exist
+database.ref().once('value').then(function(snapshot)
+{
+  // check if value exists in db
+  if (!snapshot.child("name").exists())
+  {
+    // if not, set it to initial value
+    database.ref().set({
+      name: inp_name,
+      age: inp_age,
+      email: inp_email,
+      comment: inp_comment,
+    });
+  }
+});
+// initial display
+if ($("#name-display").text().length <= 0) $("#name-display").text(inp_name);
+if ($("#age-display").text().length <= 0) $("#age-display").text(inp_age);
+if ($("#email-display").text().length <= 0) $("#email-display").text(inp_email);
+if ($("#comment-display").text().length <= 0) $("#comment-display").text(inp_comment);
+
+// on click event to decrement count
+$("#add-user").on("click", function() {
+  // Don't refresh the page!
+  event.preventDefault();
+  // Capture user inputs and store them into variables
+  inp_name = $("#name-input").val().trim();
+  inp_email = $("#email-input").val().trim();
+  inp_age = $("#age-input").val().trim();
+  inp_comment = $("#comment-input").val().trim();
+  // Console log each of the user inputs to confirm we are receiving them
+  console.log(inp_name);
+  console.log(inp_email);
+  console.log(inp_age);
+  console.log(inp_comment);
+  // Replaces the content in the "recent-member" div with the new info
+  $("#name-display").text(inp_name);
+  $("#email-display").text(inp_email);
+  $("#age-display").text(inp_age);
+  $("#comment-display").text(inp_comment);
+  // set database
+  database.ref().set({
+    name: inp_name,
+    age: inp_age,
+    email: inp_email,
+    comment: inp_comment,
+  });
+});
+
+// listen to changes in the database
+database.ref().on("value", function(snapshot) {
+  // log the database state
+  console.log(snapshot.val());
+  // set the data to db values
+  inp_name = snapshot.val().name;
+  inp_age = snapshot.val().age;
+  inp_email = snapshot.val().email;
+  inp_comment = snapshot.val().comment;
+  // display the value
+  $("#name-display").text(inp_name);
+  $("#email-display").text(inp_email);
+  $("#age-display").text(inp_age);
+  $("#comment-display").text(inp_comment);
+}, function(errorObject) {
+  // error handling
+  console.log("The read failed: " + errorObject.code);
+});
+</script>
+
+</body>
+
+</html>
