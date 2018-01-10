@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Timesheet</title>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <!-- Bootstrap -->
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <!-- Firebase  -->
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <!-- Moment -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron text-light bg-dark text-center p-4 m-0">
+      <h1>Employee Data Management</h1>
+      <h5>A Comprehensive Directory of Employee Billable Hours</h5>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <!-- Current Employees-->
+        <div class="card">
+          <div class="card-heading bg-primary p-2">
+            <h3 class="card-title m-0"><strong>Current Employees</strong></h3>
+          </div>
+          <div class="card-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Employee Name</th>
+                  <th>Role</th>
+                  <th>Start Date</th>
+                  <th>Months Worked</th>
+                  <th>Monthly Rate ($)</th>
+                  <th>Total Billed ($)</th>
+                </tr>
+              </thead>
+              <tbody id="additionalRows">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col">
+        <!-- Add Employee  -->
+        <div class="card">
+          <div class="card-heading bg-primary">
+            <h3 class="card-title p-2 m-0"><strong>Add Employee</strong></h3>
+          </div>
+          <div class="card-body">
+            <!-- Entry Form -->
+            <form>
+              <div class="form-group">
+                <label for="name">Employee Name</label>
+                <input class="form-control" id="name" type="text">
+              </div>
+              <div class="form-group">
+                <label for="role">Role</label>
+                <input class="form-control" id="role" type="text">
+              </div>
+              <div class="form-group">
+                <label for="startDate">Start Date (DD/MM/YY - ex: 01/01/16)</label>
+                <input class="form-control" id="startDate" type="text">
+              </div>
+              <div class="form-group">
+                <label for="monthlyRate">Monthly Rate</label>
+                <input class="form-control" id="monthlyRate" type="text">
+              </div>
+              <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="timesheet.js"></script>
+</body>
+</html>

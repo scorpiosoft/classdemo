@@ -10,7 +10,7 @@ var config = {
 firebase.initializeApp(config);
 // grab handle to the database
 var database = firebase.database();
-// grab handle to the database 'counts' child
+// grab handle to the database 'codersbay' child
 var cbay_ref = firebase.database().ref("codersbay");
 
 // Initial Values
